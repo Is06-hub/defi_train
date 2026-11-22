@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Cairo', 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  color-scheme: light;
+}
+
+[dir="ltr"] {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Base body background with subtle clinical mesh gradient */
+body {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(254, 226, 226, 0.35) 0px, transparent 50%),
+    radial-gradient(at 90% 80%, rgba(241, 245, 249, 0.8) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(255, 255, 255, 0.9) 0px, transparent 100%);
+  background-attachment: fixed;
+  color: #0f172a;
+}
+
+/* Ergonomic Direct Pointer Manipulation Standards */
+.touch-target {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* Prevent accidental scrolling while touching canvas elements */
+.canvas-container {
+  touch-action: none;
+  user-select: none;
+}
+
+/* Custom Keyframe Animations */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.92);
+    opacity: 0.85;
+  }
+}
+
+@keyframes heartbeat-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.08);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wave-bounce {
+  0%, 100% {
+    height: 6px;
+  }
+  50% {
+    height: 24px;
+  }
+}
+
+@keyframes radiation-flow {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-pulse-aura {
+  animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-heartbeat {
+  animation: heartbeat-pulse 1.8s ease-in-out infinite;
+}
+
+.animate-radiation-flow {
+  stroke-dasharray: 6 4;
+  animation: radiation-flow 1.2s linear infinite;
+}
+
+/* Custom Glassmorphism Cards */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-panel-elevated {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+}
+
+/* Smooth Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
